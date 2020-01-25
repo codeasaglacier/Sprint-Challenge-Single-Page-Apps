@@ -1,30 +1,20 @@
-import React, { useState , useEffect }from "react";
+import React from "react";
 import Header from "./components/Header.js";
-import axios from 'axios';
+import WelcomePage from'./components/WelcomePage'
+import CharacterCard from "./components/CharacterCard.js";
+import { Route } from 'react-router-dom'
 
 
   const App = () => {
 
-  const [character, setCharacter] = useState([])
-  // console.log(`Character: ${character}`)
-
-  useEffect(() => {
-    axios
-      .get('https://rick-api.herokuapp.com/api/character/')
-      .then(response => {
-        console.log(response.data.results)
-        // setCharacter(response.data.results)
-      })
-      .catch(error => {
-        console.log(error)
-      })
-  }, [])
-
-  return (
-    <main>
-      <Header />
-    </main>
-  );
+    return (
+      <main>
+        <Header />
+        <Route path = '/' component = { WelcomePage } />
+        <Route path = '/Characters' component = { CharacterCard} />
+      </main>
+    );
+  
 }
 
 export default App
