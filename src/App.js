@@ -1,17 +1,37 @@
 import React from "react";
 import Header from "./components/Header.js";
 import WelcomePage from'./components/WelcomePage'
-import CharacterCard from "./components/CharacterCard.js";
+import CharacterList from "./components/CharacterList.js";
 import { Route } from 'react-router-dom'
+import SearchForm from "./components/SearchForm.js";
 
 
-  const App = () => {
+  const App = (props) => {
 
     return (
       <main>
         <Header />
-        <Route path = '/' component = { WelcomePage } />
-        <Route path = '/Characters' component = { CharacterCard} />
+        <Route 
+          exact path = '/' 
+          component = { WelcomePage } 
+        />
+
+        <Route 
+          path = '/Character' 
+          component = { CharacterList }
+        />
+        <Route
+        path = '/SearchForm'
+        render = { props => (
+          <SearchForm
+            {...props}
+            // search = { search }
+            // setCharacters = { setCharacter }
+            // setSearch = { setSearch }
+          />
+        )}
+      />
+
       </main>
     );
   
